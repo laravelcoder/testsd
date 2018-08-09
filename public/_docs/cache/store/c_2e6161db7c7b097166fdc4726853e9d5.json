@@ -1,0 +1,42 @@
+{
+    "name": "App\\Traits\\FilterByUser",
+    "line": 9,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Traits",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Traits\\FilterByUser.php",
+    "relative_file": null,
+    "hash": "c3201f682df587243ee2437cc59227aaef4e6d19",
+    "parent": null,
+    "modifiers": null,
+    "is_trait": true,
+    "is_interface": false,
+    "aliases": {
+        "Builder": "Illuminate\\Database\\Eloquent\\Builder",
+        "Auth": "Illuminate\\Support\\Facades\\Auth",
+        "Session": "Illuminate\\Support\\Facades\\Session"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "bootFilterByUser": {
+            "name": "bootFilterByUser",
+            "line": 11,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 10,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}
