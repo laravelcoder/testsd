@@ -109,5 +109,4 @@ class Ad extends Model
     {
         return $this->belongsToMany(Category::class, 'ad_category')->withTrashed();
     }
-}
- 
+} 
