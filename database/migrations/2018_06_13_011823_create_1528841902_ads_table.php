@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class Create1528841902AdsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        if(! Schema::hasTable('ads')) {
+            Schema::create('ads', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('ad_label');
+                $table->text('ad_description')->nullable();
+                $table->integer('total_impressions')->nullable();
+                $table->integer('total_networks')->nullable();
+                $table->integer('total_channels')->nullable();
+                
+                $table->timestamps();
+                $table->softDeletes();
+
+                $table->index(['deleted_at']);
+            });
+        }
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('ads');
+    }
+}
