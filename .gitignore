@@ -1,19 +1,21 @@
-/node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-/.idea
-/.vscode
-/.vagrant
-Homestead.json
-Homestead.yaml
+vendor/
+node_modules/
 npm-debug.log
-yarn-error.log
+# Laravel 4 specific
+bootstrap/compiled.php
+app/storage/
+resources/views/layouts/good.html
+resources/views/layouts/test.html
+# Laravel 5 & Lumen specific
+public/storage
+public/hot
+storage/*.key
+.env.*.php
+.env.php
 .env
- 
+Homestead.yaml
+Homestead.json
 storage/
-
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
 .circleci/newads.sublime-workspace
@@ -21,4 +23,3 @@ storage/
 resources/views/auth/login.blade.php
 .circleci
 resources/views/auth/login.blade.php
- 

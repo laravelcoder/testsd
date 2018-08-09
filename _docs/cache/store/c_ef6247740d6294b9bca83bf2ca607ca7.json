@@ -1,0 +1,343 @@
+{
+    "name": "App\\Http\\Controllers\\Admin\\TeamsController",
+    "line": 15,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Http\\Controllers\\Admin",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Http\\Controllers\\Admin\\TeamsController.php",
+    "relative_file": null,
+    "hash": "90ec0b2c131752e878e5e07cec0180d8e7ad7d30",
+    "parent": "App\\Http\\Controllers\\Controller",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Team": "App\\Team",
+        "Request": "Illuminate\\Http\\Request",
+        "Gate": "Illuminate\\Support\\Facades\\Gate",
+        "Controller": "App\\Http\\Controllers\\Controller",
+        "StoreTeamsRequest": "App\\Http\\Requests\\Admin\\StoreTeamsRequest",
+        "UpdateTeamsRequest": "App\\Http\\Requests\\Admin\\UpdateTeamsRequest",
+        "DB": "Illuminate\\Support\\Facades\\DB",
+        "Carbon": "Carbon\\Carbon",
+        "Auth": "Illuminate\\Support\\Facades\\Auth"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "index": {
+            "name": "index",
+            "line": 22,
+            "short_desc": "Display a listing of Team.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "create": {
+            "name": "create",
+            "line": 39,
+            "short_desc": "Show the form for creating new Team.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "store": {
+            "name": "store",
+            "line": 53,
+            "short_desc": "Store a newly created Team in storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 53,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\StoreTeamsRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "StoreTeamsRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 53,
+                            "endLine": 53
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "edit": {
+            "name": "edit",
+            "line": 72,
+            "short_desc": "Show the form for editing Team.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 72,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "update": {
+            "name": "update",
+            "line": 89,
+            "short_desc": "Update Team in storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 89,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\UpdateTeamsRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "UpdateTeamsRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 89,
+                            "endLine": 89
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "id": {
+                    "name": "id",
+                    "line": 89,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "show": {
+            "name": "show",
+            "line": 109,
+            "short_desc": "Display Team.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 109,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "destroy": {
+            "name": "destroy",
+            "line": 128,
+            "short_desc": "Remove Team from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 128,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "massDestroy": {
+            "name": "massDestroy",
+            "line": 144,
+            "short_desc": "Delete all selected Team at once.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 144,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Illuminate\\Http\\Request",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "Illuminate",
+                            "Http",
+                            "Request"
+                        ],
+                        "attributes": {
+                            "startLine": 144,
+                            "endLine": 144
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

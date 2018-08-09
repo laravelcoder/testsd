@@ -1,0 +1,423 @@
+{
+    "name": "App\\Http\\Controllers\\Admin\\AdsController",
+    "line": 19,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Http\\Controllers\\Admin",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Http\\Controllers\\Admin\\AdsController.php",
+    "relative_file": null,
+    "hash": "54c574304b0f295ca9e1ca8a74da5291926ab9b1",
+    "parent": "App\\Http\\Controllers\\Controller",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Ad": "App\\Ad",
+        "Request": "Illuminate\\Http\\Request",
+        "Gate": "Illuminate\\Support\\Facades\\Gate",
+        "Controller": "App\\Http\\Controllers\\Controller",
+        "StoreAdsRequest": "App\\Http\\Requests\\Admin\\StoreAdsRequest",
+        "UpdateAdsRequest": "App\\Http\\Requests\\Admin\\UpdateAdsRequest",
+        "FileUploadTrait": "App\\Http\\Controllers\\Traits\\FileUploadTrait",
+        "DataTables": "Yajra\\DataTables\\DataTables",
+        "Session": "Illuminate\\Support\\Facades\\Session",
+        "Input": "Illuminate\\Support\\Facades\\Input",
+        "DB": "Illuminate\\Support\\Facades\\DB",
+        "Carbon": "Carbon\\Carbon",
+        "Auth": "Illuminate\\Support\\Facades\\Auth"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "App\\Http\\Controllers\\Traits\\FileUploadTrait": "App\\Http\\Controllers\\Traits\\FileUploadTrait"
+    },
+    "properties": [],
+    "methods": {
+        "index": {
+            "name": "index",
+            "line": 28,
+            "short_desc": "Display a listing of Ad.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "create": {
+            "name": "create",
+            "line": 132,
+            "short_desc": "Show the form for creating new Ad.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "store": {
+            "name": "store",
+            "line": 153,
+            "short_desc": "Store a newly created Ad in storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 153,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\StoreAdsRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "StoreAdsRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 153,
+                            "endLine": 153
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "edit": {
+            "name": "edit",
+            "line": 174,
+            "short_desc": "Show the form for editing Ad.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 174,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "update": {
+            "name": "update",
+            "line": 198,
+            "short_desc": "Update Ad in storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 198,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\UpdateAdsRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "UpdateAdsRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 198,
+                            "endLine": 198
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "id": {
+                    "name": "id",
+                    "line": 198,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "show": {
+            "name": "show",
+            "line": 220,
+            "short_desc": "Display Ad.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 220,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "destroy": {
+            "name": "destroy",
+            "line": 247,
+            "short_desc": "Remove Ad from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 247,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "massDestroy": {
+            "name": "massDestroy",
+            "line": 263,
+            "short_desc": "Delete all selected Ad at once.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 263,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Illuminate\\Http\\Request",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "Illuminate",
+                            "Http",
+                            "Request"
+                        ],
+                        "attributes": {
+                            "startLine": 263,
+                            "endLine": 263
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "restore": {
+            "name": "restore",
+            "line": 284,
+            "short_desc": "Restore Ad from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 284,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "perma_del": {
+            "name": "perma_del",
+            "line": 301,
+            "short_desc": "Permanently delete Ad from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 301,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

@@ -1,0 +1,564 @@
+{
+    "name": "App\\Campaign",
+    "line": 19,
+    "short_desc": "Class Campaign",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "package": [
+            [
+                "App"
+            ]
+        ],
+        "property": [
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "name",
+                ""
+            ],
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "start_date",
+                ""
+            ],
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "finish_date",
+                ""
+            ],
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "created_by",
+                ""
+            ],
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "created_by_team",
+                ""
+            ]
+        ]
+    },
+    "namespace": "App",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Campaign.php",
+    "relative_file": null,
+    "hash": "aa26a7930edf84d213dcfaa1c9ab07fd741f4d5d",
+    "parent": "Illuminate\\Database\\Eloquent\\Model",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Model": "Illuminate\\Database\\Eloquent\\Model",
+        "Carbon": "Carbon\\Carbon",
+        "SoftDeletes": "Illuminate\\Database\\Eloquent\\SoftDeletes",
+        "FilterByUser": "App\\Traits\\FilterByUser"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "Illuminate\\Database\\Eloquent\\SoftDeletes": "Illuminate\\Database\\Eloquent\\SoftDeletes",
+        "App\\Traits\\FilterByUser": "App\\Traits\\FilterByUser"
+    },
+    "properties": {
+        "fillable": {
+            "name": "fillable",
+            "line": 23,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "name",
+                            "attributes": {
+                                "startLine": 23,
+                                "endLine": 23,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 23,
+                            "endLine": 23
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "start_date",
+                            "attributes": {
+                                "startLine": 23,
+                                "endLine": 23,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 23,
+                            "endLine": 23
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "finish_date",
+                            "attributes": {
+                                "startLine": 23,
+                                "endLine": 23,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 23,
+                            "endLine": 23
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "created_by_id",
+                            "attributes": {
+                                "startLine": 23,
+                                "endLine": 23,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 23,
+                            "endLine": 23
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "created_by_team_id",
+                            "attributes": {
+                                "startLine": 23,
+                                "endLine": 23,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 23,
+                            "endLine": 23
+                        }
+                    }
+                ],
+                "attributes": {
+                    "startLine": 23,
+                    "endLine": 23,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "hidden": {
+            "name": "hidden",
+            "line": 24,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [],
+                "attributes": {
+                    "startLine": 24,
+                    "endLine": 24,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "searchable": {
+            "name": "searchable",
+            "line": 25,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 9,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "name",
+                            "attributes": {
+                                "startLine": 26,
+                                "endLine": 26,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 26,
+                            "endLine": 26
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "finish_date",
+                            "attributes": {
+                                "startLine": 27,
+                                "endLine": 27,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 27,
+                            "endLine": 27
+                        }
+                    }
+                ],
+                "attributes": {
+                    "startLine": 25,
+                    "endLine": 28,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "name": {
+            "name": "name",
+            "line": 19,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        },
+        "start_date": {
+            "name": "start_date",
+            "line": 19,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        },
+        "finish_date": {
+            "name": "finish_date",
+            "line": 19,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        },
+        "created_by": {
+            "name": "created_by",
+            "line": 19,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        },
+        "created_by_team": {
+            "name": "created_by_team",
+            "line": 19,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        }
+    },
+    "methods": {
+        "setStartDateAttribute": {
+            "name": "setStartDateAttribute",
+            "line": 35,
+            "short_desc": "Set attribute to date format",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "input": {
+                    "name": "input",
+                    "line": 35,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getStartDateAttribute": {
+            "name": "getStartDateAttribute",
+            "line": 50,
+            "short_desc": "Get attribute from date format",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "input": {
+                    "name": "input",
+                    "line": 50,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setFinishDateAttribute": {
+            "name": "setFinishDateAttribute",
+            "line": 65,
+            "short_desc": "Set attribute to date format",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "input": {
+                    "name": "input",
+                    "line": 65,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "getFinishDateAttribute": {
+            "name": "getFinishDateAttribute",
+            "line": 80,
+            "short_desc": "Get attribute from date format",
+            "long_desc": "",
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "input": {
+                    "name": "input",
+                    "line": 80,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setCreatedByIdAttribute": {
+            "name": "setCreatedByIdAttribute",
+            "line": 95,
+            "short_desc": "Set to null if empty",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "input": {
+                    "name": "input",
+                    "line": 95,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setCreatedByTeamIdAttribute": {
+            "name": "setCreatedByTeamIdAttribute",
+            "line": 104,
+            "short_desc": "Set to null if empty",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "input": {
+                    "name": "input",
+                    "line": 104,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "created_by": {
+            "name": "created_by",
+            "line": 109,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "created_by_team": {
+            "name": "created_by_team",
+            "line": 114,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

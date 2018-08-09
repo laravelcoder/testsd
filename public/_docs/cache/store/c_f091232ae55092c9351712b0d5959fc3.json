@@ -1,0 +1,42 @@
+{
+    "name": "App\\Http\\Controllers\\Admin\\AdsDashboardsController",
+    "line": 8,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Http\\Controllers\\Admin",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Http\\Controllers\\Admin\\AdsDashboardsController.php",
+    "relative_file": null,
+    "hash": "5bcc9d3a661f98be6d67e4c7bc17be55cbefe76f",
+    "parent": "App\\Http\\Controllers\\Controller",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Request": "Illuminate\\Http\\Request",
+        "Gate": "Illuminate\\Support\\Facades\\Gate",
+        "Controller": "App\\Http\\Controllers\\Controller"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "index": {
+            "name": "index",
+            "line": 10,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

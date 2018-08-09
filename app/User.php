@@ -1,22 +1,22 @@
 <?php
+
 namespace App;
 
+use App\Traits\FilterByTeam;
+use Hash;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Auth\Notifications\ResetPassword;
-use Hash;
-use App\Traits\FilterByTeam;
 
 /**
- * Class User
+ * Class User.
  *
- * @package App
  * @property string $name
  * @property string $email
  * @property string $password
  * @property string $remember_token
  * @property string $team
-*/
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -26,39 +26,41 @@ class User extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
     public static $searchable = [
     ];
-    
-    
+
     /**
-     * Hash password
+     * Hash password.
+     *
      * @param $input
      */
     public function setPasswordAttribute($input)
     {
-        if ($input)
+        if ($input) {
             $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
+        }
     }
-    
 
     /**
-     * Set to null if empty
+     * Set to null if empty.
+     *
      * @param $input
      */
     public function setTeamIdAttribute($input)
     {
         $this->attributes['team_id'] = $input ? $input : null;
     }
-    
+
     public function role()
     {
         return $this->belongsToMany(Role::class, 'role_user');
     }
-    
+
     public function team()
     {
         return $this->belongsTo(Team::class, 'team_id');
     }
-    
-    public function topics() {
+
+    public function topics()
+    {
         return $this->hasMany(MessengerTopic::class, 'receiver_id')->orWhere('sender_id', $this->id);
     }
 
@@ -71,6 +73,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(MessengerTopic::class, 'sender_id');
     }
+
     public function internalNotifications()
     {
         return $this->belongsToMany(InternalNotification::class)
@@ -81,6 +84,6 @@ class User extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-       $this->notify(new ResetPassword($token));
+        $this->notify(new ResetPassword($token));
     }
 }

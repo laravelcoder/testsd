@@ -1,0 +1,162 @@
+{
+    "name": "App\\Provider",
+    "line": 13,
+    "short_desc": "Class Provider",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "package": [
+            [
+                "App"
+            ]
+        ],
+        "property": [
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "provider",
+                ""
+            ]
+        ]
+    },
+    "namespace": "App",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Provider.php",
+    "relative_file": null,
+    "hash": "f249a9a4e680f7b33140784f517a2852da48789a",
+    "parent": "Illuminate\\Database\\Eloquent\\Model",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Model": "Illuminate\\Database\\Eloquent\\Model",
+        "SoftDeletes": "Illuminate\\Database\\Eloquent\\SoftDeletes"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "Illuminate\\Database\\Eloquent\\SoftDeletes": "Illuminate\\Database\\Eloquent\\SoftDeletes"
+    },
+    "properties": {
+        "fillable": {
+            "name": "fillable",
+            "line": 17,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "provider",
+                            "attributes": {
+                                "startLine": 17,
+                                "endLine": 17,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 17,
+                            "endLine": 17
+                        }
+                    }
+                ],
+                "attributes": {
+                    "startLine": 17,
+                    "endLine": 17,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "hidden": {
+            "name": "hidden",
+            "line": 18,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [],
+                "attributes": {
+                    "startLine": 18,
+                    "endLine": 18,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "searchable": {
+            "name": "searchable",
+            "line": 19,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 9,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "provider",
+                            "attributes": {
+                                "startLine": 20,
+                                "endLine": 20,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 20,
+                            "endLine": 20
+                        }
+                    }
+                ],
+                "attributes": {
+                    "startLine": 19,
+                    "endLine": 21,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "provider": {
+            "name": "provider",
+            "line": 13,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        }
+    },
+    "methods": [],
+    "constants": []
+}

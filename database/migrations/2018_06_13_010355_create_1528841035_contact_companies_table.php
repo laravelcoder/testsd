@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Create1528841035ContactCompaniesTable extends Migration
 {
@@ -12,16 +12,15 @@ class Create1528841035ContactCompaniesTable extends Migration
      */
     public function up()
     {
-        if(! Schema::hasTable('contact_companies')) {
+        if (!Schema::hasTable('contact_companies')) {
             Schema::create('contact_companies', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name')->nullable();
                 $table->string('address')->nullable();
                 $table->string('website')->nullable();
                 $table->string('email')->nullable();
-                
+
                 $table->timestamps();
-                
             });
         }
     }

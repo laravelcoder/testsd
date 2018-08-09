@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use App\MessengerTopic;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\User;
 use Illuminate\Support\Facades\Auth;
-use App\MessengerTopic;
-use App\Http\Controllers\Controller;
 
 class MessengerController extends Controller
 {
@@ -21,10 +21,9 @@ class MessengerController extends Controller
     public function index()
     {
         $topics = Auth::user()->topics()->with('receiver', 'sender')->orderBy('sent_at', 'desc')->get();
-        $title  = 'Messages';
+        $title = 'Messages';
 
         return view('admin.messenger.index', compact('topics', 'title'));
-
     }
 
     /**
@@ -43,6 +42,7 @@ class MessengerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param StoreMessageRequest|Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreMessageRequest $request)
@@ -67,13 +67,14 @@ class MessengerController extends Controller
      * Display the specified resource.
      *
      * @param MessengerTopic $topic
+     *
      * @return \Illuminate\Http\Response
+     *
      * @internal param MessengerTopic $topic
      * @internal param int $id
      */
     public function show(MessengerTopic $topic)
     {
-
         $user = Auth::user();
         if ($topic->receiver->id != $user->id && $topic->sender->id != $user->id) {
             return abort(401);
@@ -81,8 +82,8 @@ class MessengerController extends Controller
 
         $topic->load('receiver', 'sender', 'messages');
         $unreadMessages = [];
-        foreach($topic->messages as $message) {
-            if($message->unread($topic)) {
+        foreach ($topic->messages as $message) {
+            if ($message->unread($topic)) {
                 $unreadMessages[] = $message->id;
             }
         }
@@ -95,7 +96,9 @@ class MessengerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param MessengerTopic $topic
+     *
      * @return \Illuminate\Http\Response
+     *
      * @internal param int $id
      */
     public function edit(MessengerTopic $topic)
@@ -114,14 +117,14 @@ class MessengerController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateMessageRequest|Request $request
-     * @param MessengerTopic $topic
+     * @param MessengerTopic               $topic
+     *
      * @return \Illuminate\Http\Response
+     *
      * @internal param int $id
      */
     public function update(UpdateMessageRequest $request, MessengerTopic $topic)
     {
-
-
         $user = Auth::user();
         if ($topic->receiver->id != $user->id && $topic->sender->id != $user->id) {
             return abort(401);
@@ -142,8 +145,11 @@ class MessengerController extends Controller
      * Remove the specified resource from storage.
      *
      * @param MessengerTopic $topic
-     * @return \Illuminate\Http\Response
+     *
      * @throws \Exception
+     *
+     * @return \Illuminate\Http\Response
+     *
      * @internal param int $id
      */
     public function destroy(MessengerTopic $topic)
@@ -161,7 +167,7 @@ class MessengerController extends Controller
     public function inbox()
     {
         $topics = Auth::user()->inbox()->with('receiver', 'sender')->orderBy('sent_at', 'desc')->get();
-        $title  = 'Inbox';
+        $title = 'Inbox';
 
         return view('admin.messenger.index', compact('topics', 'title'));
     }
@@ -169,7 +175,7 @@ class MessengerController extends Controller
     public function outbox()
     {
         $topics = Auth::user()->outbox()->with('receiver', 'sender')->orderBy('sent_at', 'desc')->get();
-        $title  = 'Outbox';
+        $title = 'Outbox';
 
         return view('admin.messenger.index', compact('topics', 'title'));
     }

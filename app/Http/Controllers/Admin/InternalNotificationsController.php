@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\InternalNotification;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreInternalNotificationsRequest;
 use App\Http\Requests\Admin\UpdateInternalNotificationsRequest;
-
-use Illuminate\Support\Facades\DB;
+use App\InternalNotification;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+
 class InternalNotificationsController extends Controller
 {
     /**
@@ -21,12 +21,11 @@ class InternalNotificationsController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('internal_notification_access')) {
+        if (!Gate::allows('internal_notification_access')) {
             return abort(401);
         }
 
-
-                $internal_notifications = InternalNotification::all();
+        $internal_notifications = InternalNotification::all();
 
         return view('admin.internal_notifications.index', compact('internal_notifications'));
     }
@@ -38,12 +37,11 @@ class InternalNotificationsController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('internal_notification_create')) {
+        if (!Gate::allows('internal_notification_create')) {
             return abort(401);
         }
-        
-        $users = \App\User::get()->pluck('name', 'id');
 
+        $users = \App\User::get()->pluck('name', 'id');
 
         return view('admin.internal_notifications.create', compact('users'));
     }
@@ -51,37 +49,35 @@ class InternalNotificationsController extends Controller
     /**
      * Store a newly created InternalNotification in storage.
      *
-     * @param  \App\Http\Requests\StoreInternalNotificationsRequest  $request
+     * @param \App\Http\Requests\StoreInternalNotificationsRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreInternalNotificationsRequest $request)
     {
-        if (! Gate::allows('internal_notification_create')) {
+        if (!Gate::allows('internal_notification_create')) {
             return abort(401);
         }
         $internal_notification = InternalNotification::create($request->all());
-        $internal_notification->users()->sync(array_filter((array)$request->input('users')));
-
-
+        $internal_notification->users()->sync(array_filter((array) $request->input('users')));
 
         return redirect()->route('admin.internal_notifications.index');
     }
 
-
     /**
      * Show the form for editing InternalNotification.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if (! Gate::allows('internal_notification_edit')) {
+        if (!Gate::allows('internal_notification_edit')) {
             return abort(401);
         }
-        
-        $users = \App\User::get()->pluck('name', 'id');
 
+        $users = \App\User::get()->pluck('name', 'id');
 
         $internal_notification = InternalNotification::findOrFail($id);
 
@@ -91,34 +87,33 @@ class InternalNotificationsController extends Controller
     /**
      * Update InternalNotification in storage.
      *
-     * @param  \App\Http\Requests\UpdateInternalNotificationsRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UpdateInternalNotificationsRequest $request
+     * @param int                                                   $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateInternalNotificationsRequest $request, $id)
     {
-        if (! Gate::allows('internal_notification_edit')) {
+        if (!Gate::allows('internal_notification_edit')) {
             return abort(401);
         }
         $internal_notification = InternalNotification::findOrFail($id);
         $internal_notification->update($request->all());
-        $internal_notification->users()->sync(array_filter((array)$request->input('users')));
-
-
+        $internal_notification->users()->sync(array_filter((array) $request->input('users')));
 
         return redirect()->route('admin.internal_notifications.index');
     }
 
-
     /**
      * Display InternalNotification.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if (! Gate::allows('internal_notification_view')) {
+        if (!Gate::allows('internal_notification_view')) {
             return abort(401);
         }
         $internal_notification = InternalNotification::findOrFail($id);
@@ -126,16 +121,16 @@ class InternalNotificationsController extends Controller
         return view('admin.internal_notifications.show', compact('internal_notification'));
     }
 
-
     /**
      * Remove InternalNotification from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if (! Gate::allows('internal_notification_delete')) {
+        if (!Gate::allows('internal_notification_delete')) {
             return abort(401);
         }
         $internal_notification = InternalNotification::findOrFail($id);
@@ -151,7 +146,7 @@ class InternalNotificationsController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('internal_notification_delete')) {
+        if (!Gate::allows('internal_notification_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
@@ -162,8 +157,9 @@ class InternalNotificationsController extends Controller
             }
         }
     }
+
     /**
-     * Set all user notifications as read
+     * Set all user notifications as read.
      */
     public function read()
     {

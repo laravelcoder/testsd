@@ -1,15 +1,15 @@
 <?php
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Affiliate
+ * Class Affiliate.
  *
- * @package App
  * @property string $affiliate
-*/
+ */
 class Affiliate extends Model
 {
     use SoftDeletes;
@@ -18,9 +18,9 @@ class Affiliate extends Model
     protected $hidden = [];
     public static $searchable = [
     ];
-    
-    
-    public function stations() {
+
+    public function stations()
+    {
         return $this->hasMany(Station::class, 'affiliate_id');
     }
 }

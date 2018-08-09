@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Create1528841902AdsTable extends Migration
 {
@@ -12,7 +12,7 @@ class Create1528841902AdsTable extends Migration
      */
     public function up()
     {
-        if(! Schema::hasTable('ads')) {
+        if (!Schema::hasTable('ads')) {
             Schema::create('ads', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('ad_label');
@@ -20,7 +20,7 @@ class Create1528841902AdsTable extends Migration
                 $table->integer('total_impressions')->nullable();
                 $table->integer('total_networks')->nullable();
                 $table->integer('total_channels')->nullable();
-                
+
                 $table->timestamps();
                 $table->softDeletes();
 

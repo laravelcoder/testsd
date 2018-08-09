@@ -1,22 +1,22 @@
 <?php
+
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Traits\FilterByUser;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Campaign
+ * Class Campaign.
  *
- * @package App
  * @property string $name
  * @property string $start_date
  * @property string $finish_date
  * @property string $created_by
  * @property string $created_by_team
  * @property string $advertiser
-*/
+ */
 class Campaign extends Model
 {
     use SoftDeletes, FilterByUser;
@@ -27,10 +27,10 @@ class Campaign extends Model
         'name',
         'finish_date',
     ];
-    
 
     /**
-     * Set attribute to date format
+     * Set attribute to date format.
+     *
      * @param $input
      */
     public function setStartDateAttribute($input)
@@ -43,7 +43,8 @@ class Campaign extends Model
     }
 
     /**
-     * Get attribute from date format
+     * Get attribute from date format.
+     *
      * @param $input
      *
      * @return string
@@ -60,7 +61,8 @@ class Campaign extends Model
     }
 
     /**
-     * Set attribute to date format
+     * Set attribute to date format.
+     *
      * @param $input
      */
     public function setFinishDateAttribute($input)
@@ -73,7 +75,8 @@ class Campaign extends Model
     }
 
     /**
-     * Get attribute from date format
+     * Get attribute from date format.
+     *
      * @param $input
      *
      * @return string
@@ -90,7 +93,8 @@ class Campaign extends Model
     }
 
     /**
-     * Set to null if empty
+     * Set to null if empty.
+     *
      * @param $input
      */
     public function setCreatedByIdAttribute($input)
@@ -99,7 +103,8 @@ class Campaign extends Model
     }
 
     /**
-     * Set to null if empty
+     * Set to null if empty.
+     *
      * @param $input
      */
     public function setCreatedByTeamIdAttribute($input)
@@ -108,32 +113,32 @@ class Campaign extends Model
     }
 
     /**
-     * Set to null if empty
+     * Set to null if empty.
+     *
      * @param $input
      */
     public function setAdvertiserIdAttribute($input)
     {
         $this->attributes['advertiser_id'] = $input ? $input : null;
     }
-    
+
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');
     }
-    
+
     public function created_by_team()
     {
         return $this->belongsTo(Team::class, 'created_by_team_id');
     }
-    
+
     public function advertiser()
     {
         return $this->belongsTo(ContactCompany::class, 'advertiser_id');
     }
-    
+
     public function ads()
     {
         return $this->belongsToMany(Ad::class, 'ad_campaign')->withTrashed();
     }
-    
 }

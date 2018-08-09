@@ -24,11 +24,11 @@ trait FilterByUser
             $modelName = class_basename(self::class);
 
             if (!is_null($canSeeAllRecordsRoleId) && in_array($canSeeAllRecordsRoleId, $currentUser->role->pluck('id')->toArray())) {
-                if (Session::get($modelName . '.filter', 'all') == 'my') {
-                    Session::put($modelName . '.filter', 'my');
+                if (Session::get($modelName.'.filter', 'all') == 'my') {
+                    Session::put($modelName.'.filter', 'my');
                     $addScope = true;
                 } else {
-                    Session::put($modelName . '.filter', 'all');
+                    Session::put($modelName.'.filter', 'all');
                     $addScope = false;
                 }
             } else {
@@ -39,7 +39,7 @@ trait FilterByUser
             foreach ($userRoles as $userRole) {
                 if ($userRole->id == 3) {
                     if ($addScope) {
-                        if (((new self)->getTable()) == 'teams') {
+                        if (((new self())->getTable()) == 'teams') {
                             static::addGlobalScope('created_by_team_id', function (Builder $builder) use ($currentUser) {
                                 $builder->where('created_by_team_id', $currentUser->team_id)
                                     ->orWhere('id', $currentUser->team_id);
@@ -52,7 +52,7 @@ trait FilterByUser
                     }
                 } else {
                     if ($addScope) {
-                        if (((new self)->getTable()) == 'users') {
+                        if (((new self())->getTable()) == 'users') {
                             static::addGlobalScope('created_by_id', function (Builder $builder) use ($currentUser) {
                                 $builder->where('created_by_id', $currentUser->id)
                                     ->orWhere('id', $currentUser->id);

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -23,12 +24,12 @@ class StoreAdsRequest extends FormRequest
     public function rules()
     {
         return [
-            'ad_label' => 'required',
+            'ad_label'          => 'required',
             'total_impressions' => 'max:2147483647|nullable|numeric',
-            'total_networks' => 'max:2147483647|nullable|numeric',
-            'total_channels' => 'max:2147483647|nullable|numeric',
-            'category_id.*' => 'exists:categories,id',
-            'video_screenshot' => 'nullable|mimes:png,jpg,jpeg,gif',
+            'total_networks'    => 'max:2147483647|nullable|numeric',
+            'total_channels'    => 'max:2147483647|nullable|numeric',
+            'category_id.*'     => 'exists:categories,id',
+            'video_screenshot'  => 'nullable|mimes:png,jpg,jpeg,gif',
         ];
     }
 }

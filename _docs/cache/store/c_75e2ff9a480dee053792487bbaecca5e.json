@@ -1,0 +1,69 @@
+{
+    "name": "App\\Providers\\AppServiceProvider",
+    "line": 13,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Providers",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Providers\\AppServiceProvider.php",
+    "relative_file": null,
+    "hash": "f580a301b7d4ef8d82350015f28bbae3e744a69f",
+    "parent": "Illuminate\\Support\\ServiceProvider",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "ServiceProvider": "Illuminate\\Support\\ServiceProvider",
+        "Schema": "Illuminate\\Support\\Facades\\Schema",
+        "DuskServiceProvider": "Laravel\\Dusk\\DuskServiceProvider",
+        "Auth": "Illuminate\\Support\\Facades\\Auth",
+        "DB": "Illuminate\\Support\\Facades\\DB",
+        "Validator": "Illuminate\\Support\\Facades\\Validator"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "boot": {
+            "name": "boot",
+            "line": 20,
+            "short_desc": "Bootstrap any application services.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "register": {
+            "name": "register",
+            "line": 32,
+            "short_desc": "Register any application services.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

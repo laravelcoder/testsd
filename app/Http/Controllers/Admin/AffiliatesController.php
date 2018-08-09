@@ -3,16 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Affiliate;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreAffiliatesRequest;
 use App\Http\Requests\Admin\UpdateAffiliatesRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Yajra\DataTables\DataTables;
 
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class AffiliatesController extends Controller
 {
     /**
@@ -22,20 +19,17 @@ class AffiliatesController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('affiliate_access')) {
+        if (!Gate::allows('affiliate_access')) {
             return abort(401);
         }
 
-
-        
         if (request()->ajax()) {
             $query = Affiliate::query();
             $template = 'actionsTemplate';
-            if(request('show_deleted') == 1) {
-                
-        if (! Gate::allows('affiliate_delete')) {
-            return abort(401);
-        }
+            if (request('show_deleted') == 1) {
+                if (!Gate::allows('affiliate_delete')) {
+                    return abort(401);
+                }
                 $query->onlyTrashed();
                 $template = 'restoreTemplate';
             }
@@ -51,7 +45,7 @@ class AffiliatesController extends Controller
             $table->addColumn('massDelete', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) use ($template) {
-                $gateKey  = 'affiliate_';
+                $gateKey = 'affiliate_';
                 $routeKey = 'admin.affiliates';
 
                 return view($template, compact('row', 'gateKey', 'routeKey'));
@@ -60,7 +54,7 @@ class AffiliatesController extends Controller
                 return $row->affiliate ? $row->affiliate : '';
             });
 
-            $table->rawColumns(['actions','massDelete']);
+            $table->rawColumns(['actions', 'massDelete']);
 
             return $table->make(true);
         }
@@ -75,21 +69,23 @@ class AffiliatesController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('affiliate_create')) {
+        if (!Gate::allows('affiliate_create')) {
             return abort(401);
         }
+
         return view('admin.affiliates.create');
     }
 
     /**
      * Store a newly created Affiliate in storage.
      *
-     * @param  \App\Http\Requests\StoreAffiliatesRequest  $request
+     * @param \App\Http\Requests\StoreAffiliatesRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreAffiliatesRequest $request)
     {
-        if (! Gate::allows('affiliate_create')) {
+        if (!Gate::allows('affiliate_create')) {
             return abort(401);
         }
         $affiliate = Affiliate::create($request->all());
@@ -98,20 +94,19 @@ class AffiliatesController extends Controller
             $affiliate->stations()->create($data);
         }
 
-
         return redirect()->route('admin.affiliates.index');
     }
-
 
     /**
      * Show the form for editing Affiliate.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if (! Gate::allows('affiliate_edit')) {
+        if (!Gate::allows('affiliate_edit')) {
             return abort(401);
         }
         $affiliate = Affiliate::findOrFail($id);
@@ -122,25 +117,26 @@ class AffiliatesController extends Controller
     /**
      * Update Affiliate in storage.
      *
-     * @param  \App\Http\Requests\UpdateAffiliatesRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UpdateAffiliatesRequest $request
+     * @param int                                        $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateAffiliatesRequest $request, $id)
     {
-        if (! Gate::allows('affiliate_edit')) {
+        if (!Gate::allows('affiliate_edit')) {
             return abort(401);
         }
         $affiliate = Affiliate::findOrFail($id);
         $affiliate->update($request->all());
 
-        $stations           = $affiliate->stations;
+        $stations = $affiliate->stations;
         $currentStationData = [];
         foreach ($request->input('stations', []) as $index => $data) {
-            if (is_integer($index)) {
+            if (is_int($index)) {
                 $affiliate->stations()->create($data);
             } else {
-                $id                          = explode('-', $index)[1];
+                $id = explode('-', $index)[1];
                 $currentStationData[$id] = $data;
             }
         }
@@ -152,23 +148,23 @@ class AffiliatesController extends Controller
             }
         }
 
-
         return redirect()->route('admin.affiliates.index');
     }
-
 
     /**
      * Display Affiliate.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if (! Gate::allows('affiliate_view')) {
+        if (!Gate::allows('affiliate_view')) {
             return abort(401);
         }
-        $stations = \App\Station::where('affiliate_id', $id)->get();$networks = \App\Network::whereHas('affiliates',
+        $stations = \App\Station::where('affiliate_id', $id)->get();
+        $networks = \App\Network::whereHas('affiliates',
                     function ($query) use ($id) {
                         $query->where('id', $id);
                     })->get();
@@ -178,16 +174,16 @@ class AffiliatesController extends Controller
         return view('admin.affiliates.show', compact('affiliate', 'stations', 'networks'));
     }
 
-
     /**
      * Remove Affiliate from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if (! Gate::allows('affiliate_delete')) {
+        if (!Gate::allows('affiliate_delete')) {
             return abort(401);
         }
         $affiliate = Affiliate::findOrFail($id);
@@ -203,7 +199,7 @@ class AffiliatesController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('affiliate_delete')) {
+        if (!Gate::allows('affiliate_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
@@ -215,16 +211,16 @@ class AffiliatesController extends Controller
         }
     }
 
-
     /**
      * Restore Affiliate from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function restore($id)
     {
-        if (! Gate::allows('affiliate_delete')) {
+        if (!Gate::allows('affiliate_delete')) {
             return abort(401);
         }
         $affiliate = Affiliate::onlyTrashed()->findOrFail($id);
@@ -236,12 +232,13 @@ class AffiliatesController extends Controller
     /**
      * Permanently delete Affiliate from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function perma_del($id)
     {
-        if (! Gate::allows('affiliate_delete')) {
+        if (!Gate::allows('affiliate_delete')) {
             return abort(401);
         }
         $affiliate = Affiliate::onlyTrashed()->findOrFail($id);

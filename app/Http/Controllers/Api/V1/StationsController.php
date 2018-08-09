@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Station;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreStationsRequest;
 use App\Http\Requests\Admin\UpdateStationsRequest;
-use Yajra\DataTables\DataTables;
+use App\Station;
 
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class StationsController extends Controller
 {
     public function index()
@@ -28,7 +23,6 @@ class StationsController extends Controller
     {
         $station = Station::findOrFail($id);
         $station->update($request->all());
-        
 
         return $station;
     }
@@ -36,7 +30,6 @@ class StationsController extends Controller
     public function store(StoreStationsRequest $request)
     {
         $station = Station::create($request->all());
-        
 
         return $station;
     }
@@ -45,6 +38,7 @@ class StationsController extends Controller
     {
         $station = Station::findOrFail($id);
         $station->delete();
+
         return '';
     }
 }

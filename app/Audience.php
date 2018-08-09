@@ -1,20 +1,20 @@
 <?php
+
 namespace App;
 
+use App\Traits\FilterByUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Traits\FilterByUser;
 
 /**
- * Class Audience
+ * Class Audience.
  *
- * @package App
  * @property string $name
  * @property string $value
  * @property string $created_by
  * @property string $created_by_team
  * @property string $advertiser
-*/
+ */
 class Audience extends Model
 {
     use SoftDeletes, FilterByUser;
@@ -24,10 +24,10 @@ class Audience extends Model
     public static $searchable = [
         'name',
     ];
-    
 
     /**
-     * Set to null if empty
+     * Set to null if empty.
+     *
      * @param $input
      */
     public function setCreatedByIdAttribute($input)
@@ -36,7 +36,8 @@ class Audience extends Model
     }
 
     /**
-     * Set to null if empty
+     * Set to null if empty.
+     *
      * @param $input
      */
     public function setCreatedByTeamIdAttribute($input)
@@ -45,27 +46,27 @@ class Audience extends Model
     }
 
     /**
-     * Set to null if empty
+     * Set to null if empty.
+     *
      * @param $input
      */
     public function setAdvertiserIdAttribute($input)
     {
         $this->attributes['advertiser_id'] = $input ? $input : null;
     }
-    
+
     public function created_by()
     {
         return $this->belongsTo(User::class, 'created_by_id');
     }
-    
+
     public function created_by_team()
     {
         return $this->belongsTo(Team::class, 'created_by_team_id');
     }
-    
+
     public function advertiser()
     {
         return $this->belongsTo(ContactCompany::class, 'advertiser_id');
     }
-    
 }

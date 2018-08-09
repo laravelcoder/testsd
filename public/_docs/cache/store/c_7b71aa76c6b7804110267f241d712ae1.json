@@ -1,0 +1,423 @@
+{
+    "name": "App\\Http\\Controllers\\Admin\\AgentsController",
+    "line": 19,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Http\\Controllers\\Admin",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Http\\Controllers\\Admin\\AgentsController.php",
+    "relative_file": null,
+    "hash": "6009e5775ff4490b6ccf833c13a69531d3a4de17",
+    "parent": "App\\Http\\Controllers\\Controller",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Agent": "App\\Agent",
+        "Request": "Illuminate\\Http\\Request",
+        "Gate": "Illuminate\\Support\\Facades\\Gate",
+        "Controller": "App\\Http\\Controllers\\Controller",
+        "StoreAgentsRequest": "App\\Http\\Requests\\Admin\\StoreAgentsRequest",
+        "UpdateAgentsRequest": "App\\Http\\Requests\\Admin\\UpdateAgentsRequest",
+        "FileUploadTrait": "App\\Http\\Controllers\\Traits\\FileUploadTrait",
+        "DataTables": "Yajra\\DataTables\\DataTables",
+        "Session": "Illuminate\\Support\\Facades\\Session",
+        "Input": "Illuminate\\Support\\Facades\\Input",
+        "DB": "Illuminate\\Support\\Facades\\DB",
+        "Carbon": "Carbon\\Carbon",
+        "Auth": "Illuminate\\Support\\Facades\\Auth"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "App\\Http\\Controllers\\Traits\\FileUploadTrait": "App\\Http\\Controllers\\Traits\\FileUploadTrait"
+    },
+    "properties": [],
+    "methods": {
+        "index": {
+            "name": "index",
+            "line": 28,
+            "short_desc": "Display a listing of Agent.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "create": {
+            "name": "create",
+            "line": 134,
+            "short_desc": "Show the form for creating new Agent.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "store": {
+            "name": "store",
+            "line": 154,
+            "short_desc": "Store a newly created Agent in storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 154,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\StoreAgentsRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "StoreAgentsRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 154,
+                            "endLine": 154
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "edit": {
+            "name": "edit",
+            "line": 178,
+            "short_desc": "Show the form for editing Agent.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 178,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "update": {
+            "name": "update",
+            "line": 201,
+            "short_desc": "Update Agent in storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 201,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\UpdateAgentsRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "UpdateAgentsRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 201,
+                            "endLine": 201
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "id": {
+                    "name": "id",
+                    "line": 201,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "show": {
+            "name": "show",
+            "line": 240,
+            "short_desc": "Display Agent.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 240,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "destroy": {
+            "name": "destroy",
+            "line": 263,
+            "short_desc": "Remove Agent from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 263,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "massDestroy": {
+            "name": "massDestroy",
+            "line": 279,
+            "short_desc": "Delete all selected Agent at once.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 279,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Illuminate\\Http\\Request",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "Illuminate",
+                            "Http",
+                            "Request"
+                        ],
+                        "attributes": {
+                            "startLine": 279,
+                            "endLine": 279
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "restore": {
+            "name": "restore",
+            "line": 300,
+            "short_desc": "Restore Agent from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 300,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "perma_del": {
+            "name": "perma_del",
+            "line": 317,
+            "short_desc": "Permanently delete Agent from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 317,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Update1529434152AgentsTable extends Migration
 {
@@ -13,12 +13,10 @@ class Update1529434152AgentsTable extends Migration
     public function up()
     {
         Schema::table('agents', function (Blueprint $table) {
-            
-if (!Schema::hasColumn('agents', 'notes')) {
+            if (!Schema::hasColumn('agents', 'notes')) {
                 $table->text('notes')->nullable();
-                }
+            }
         });
-
     }
 
     /**
@@ -30,8 +28,6 @@ if (!Schema::hasColumn('agents', 'notes')) {
     {
         Schema::table('agents', function (Blueprint $table) {
             $table->dropColumn('notes');
-            
         });
-
     }
 }

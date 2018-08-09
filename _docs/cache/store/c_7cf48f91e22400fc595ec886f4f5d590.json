@@ -1,0 +1,530 @@
+{
+    "name": "App\\User",
+    "line": 20,
+    "short_desc": "Class User",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "package": [
+            [
+                "App"
+            ]
+        ],
+        "property": [
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "name",
+                ""
+            ],
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "email",
+                ""
+            ],
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "password",
+                ""
+            ],
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "remember_token",
+                ""
+            ],
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "team",
+                ""
+            ]
+        ]
+    },
+    "namespace": "App",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\User.php",
+    "relative_file": null,
+    "hash": "1a62bd8a94146698db5ce8fbf797884d1e527073",
+    "parent": "Illuminate\\Foundation\\Auth\\User",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Authenticatable": "Illuminate\\Foundation\\Auth\\User",
+        "Notifiable": "Illuminate\\Notifications\\Notifiable",
+        "ResetPassword": "Illuminate\\Auth\\Notifications\\ResetPassword",
+        "Hash": "Hash",
+        "FilterByTeam": "App\\Traits\\FilterByTeam"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "Illuminate\\Notifications\\Notifiable": "Illuminate\\Notifications\\Notifiable",
+        "App\\Traits\\FilterByTeam": "App\\Traits\\FilterByTeam"
+    },
+    "properties": {
+        "fillable": {
+            "name": "fillable",
+            "line": 25,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "name",
+                            "attributes": {
+                                "startLine": 25,
+                                "endLine": 25,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 25,
+                            "endLine": 25
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "email",
+                            "attributes": {
+                                "startLine": 25,
+                                "endLine": 25,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 25,
+                            "endLine": 25
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "password",
+                            "attributes": {
+                                "startLine": 25,
+                                "endLine": 25,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 25,
+                            "endLine": 25
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "remember_token",
+                            "attributes": {
+                                "startLine": 25,
+                                "endLine": 25,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 25,
+                            "endLine": 25
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "team_id",
+                            "attributes": {
+                                "startLine": 25,
+                                "endLine": 25,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 25,
+                            "endLine": 25
+                        }
+                    }
+                ],
+                "attributes": {
+                    "startLine": 25,
+                    "endLine": 25,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "hidden": {
+            "name": "hidden",
+            "line": 26,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "password",
+                            "attributes": {
+                                "startLine": 26,
+                                "endLine": 26,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 26,
+                            "endLine": 26
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "remember_token",
+                            "attributes": {
+                                "startLine": 26,
+                                "endLine": 26,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 26,
+                            "endLine": 26
+                        }
+                    }
+                ],
+                "attributes": {
+                    "startLine": 26,
+                    "endLine": 26,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "searchable": {
+            "name": "searchable",
+            "line": 27,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 9,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [],
+                "attributes": {
+                    "startLine": 27,
+                    "endLine": 28,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "name": {
+            "name": "name",
+            "line": 20,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        },
+        "email": {
+            "name": "email",
+            "line": 20,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        },
+        "password": {
+            "name": "password",
+            "line": 20,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        },
+        "remember_token": {
+            "name": "remember_token",
+            "line": 20,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        },
+        "team": {
+            "name": "team",
+            "line": 20,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        }
+    },
+    "methods": {
+        "setPasswordAttribute": {
+            "name": "setPasswordAttribute",
+            "line": 35,
+            "short_desc": "Hash password",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "input": {
+                    "name": "input",
+                    "line": 35,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "setTeamIdAttribute": {
+            "name": "setTeamIdAttribute",
+            "line": 46,
+            "short_desc": "Set to null if empty",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "input": {
+                    "name": "input",
+                    "line": 46,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "role": {
+            "name": "role",
+            "line": 51,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "team": {
+            "name": "team",
+            "line": 56,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "topics": {
+            "name": "topics",
+            "line": 61,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "inbox": {
+            "name": "inbox",
+            "line": 65,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "outbox": {
+            "name": "outbox",
+            "line": 70,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "internalNotifications": {
+            "name": "internalNotifications",
+            "line": 74,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "sendPasswordResetNotification": {
+            "name": "sendPasswordResetNotification",
+            "line": 82,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "token": {
+                    "name": "token",
+                    "line": 82,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

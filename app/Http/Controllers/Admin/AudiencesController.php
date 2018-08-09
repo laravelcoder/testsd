@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Audience;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreAudiencesRequest;
 use App\Http\Requests\Admin\UpdateAudiencesRequest;
-use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\DataTables;
 
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class AudiencesController extends Controller
 {
     /**
@@ -24,7 +21,7 @@ class AudiencesController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('audience_access')) {
+        if (!Gate::allows('audience_access')) {
             return abort(401);
         }
         if ($filterBy = Input::get('filter')) {
@@ -35,18 +32,16 @@ class AudiencesController extends Controller
             }
         }
 
-        
         if (request()->ajax()) {
             $query = Audience::query();
-            $query->with("created_by");
-            $query->with("created_by_team");
-            $query->with("advertiser");
+            $query->with('created_by');
+            $query->with('created_by_team');
+            $query->with('advertiser');
             $template = 'actionsTemplate';
-            if(request('show_deleted') == 1) {
-                
-        if (! Gate::allows('audience_delete')) {
-            return abort(401);
-        }
+            if (request('show_deleted') == 1) {
+                if (!Gate::allows('audience_delete')) {
+                    return abort(401);
+                }
                 $query->onlyTrashed();
                 $template = 'restoreTemplate';
             }
@@ -66,7 +61,7 @@ class AudiencesController extends Controller
             $table->addColumn('massDelete', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) use ($template) {
-                $gateKey  = 'audience_';
+                $gateKey = 'audience_';
                 $routeKey = 'admin.audiences';
 
                 return view($template, compact('row', 'gateKey', 'routeKey'));
@@ -84,7 +79,7 @@ class AudiencesController extends Controller
                 return $row->advertiser ? $row->advertiser->name : '';
             });
 
-            $table->rawColumns(['actions','massDelete']);
+            $table->rawColumns(['actions', 'massDelete']);
 
             return $table->make(true);
         }
@@ -99,10 +94,10 @@ class AudiencesController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('audience_create')) {
+        if (!Gate::allows('audience_create')) {
             return abort(401);
         }
-        
+
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
@@ -113,34 +108,33 @@ class AudiencesController extends Controller
     /**
      * Store a newly created Audience in storage.
      *
-     * @param  \App\Http\Requests\StoreAudiencesRequest  $request
+     * @param \App\Http\Requests\StoreAudiencesRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreAudiencesRequest $request)
     {
-        if (! Gate::allows('audience_create')) {
+        if (!Gate::allows('audience_create')) {
             return abort(401);
         }
         $audience = Audience::create($request->all());
 
-
-
         return redirect()->route('admin.audiences.index');
     }
-
 
     /**
      * Show the form for editing Audience.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if (! Gate::allows('audience_edit')) {
+        if (!Gate::allows('audience_edit')) {
             return abort(401);
         }
-        
+
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
@@ -153,33 +147,32 @@ class AudiencesController extends Controller
     /**
      * Update Audience in storage.
      *
-     * @param  \App\Http\Requests\UpdateAudiencesRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UpdateAudiencesRequest $request
+     * @param int                                       $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateAudiencesRequest $request, $id)
     {
-        if (! Gate::allows('audience_edit')) {
+        if (!Gate::allows('audience_edit')) {
             return abort(401);
         }
         $audience = Audience::findOrFail($id);
         $audience->update($request->all());
 
-
-
         return redirect()->route('admin.audiences.index');
     }
-
 
     /**
      * Display Audience.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if (! Gate::allows('audience_view')) {
+        if (!Gate::allows('audience_view')) {
             return abort(401);
         }
         $audience = Audience::findOrFail($id);
@@ -187,16 +180,16 @@ class AudiencesController extends Controller
         return view('admin.audiences.show', compact('audience'));
     }
 
-
     /**
      * Remove Audience from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if (! Gate::allows('audience_delete')) {
+        if (!Gate::allows('audience_delete')) {
             return abort(401);
         }
         $audience = Audience::findOrFail($id);
@@ -212,7 +205,7 @@ class AudiencesController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('audience_delete')) {
+        if (!Gate::allows('audience_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
@@ -224,16 +217,16 @@ class AudiencesController extends Controller
         }
     }
 
-
     /**
      * Restore Audience from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function restore($id)
     {
-        if (! Gate::allows('audience_delete')) {
+        if (!Gate::allows('audience_delete')) {
             return abort(401);
         }
         $audience = Audience::onlyTrashed()->findOrFail($id);
@@ -245,12 +238,13 @@ class AudiencesController extends Controller
     /**
      * Permanently delete Audience from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function perma_del($id)
     {
-        if (! Gate::allows('audience_delete')) {
+        if (!Gate::allows('audience_delete')) {
             return abort(401);
         }
         $audience = Audience::onlyTrashed()->findOrFail($id);

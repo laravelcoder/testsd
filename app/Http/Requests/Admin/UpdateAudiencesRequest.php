@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -23,8 +24,8 @@ class UpdateAudiencesRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'name' => 'required',
+
+            'name'  => 'required',
             'value' => 'required',
         ];
     }

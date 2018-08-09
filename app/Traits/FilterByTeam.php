@@ -10,7 +10,7 @@ trait FilterByTeam
 {
     protected static function bootFilterByTeam()
     {
-        if (! app()->runningInConsole()) {
+        if (!app()->runningInConsole()) {
             $currentUser = Auth::user();
             if (!$currentUser) {
                 return;
@@ -19,11 +19,11 @@ trait FilterByTeam
             $modelName = class_basename(self::class);
 
             if (!is_null($canSeeAllRecordsRoleId) && in_array($canSeeAllRecordsRoleId, $currentUser->role->pluck('id')->toArray())) {
-                if (Session::get($modelName . '.filter', 'all') == 'my') {
-                    Session::put($modelName . '.filter', 'my');
+                if (Session::get($modelName.'.filter', 'all') == 'my') {
+                    Session::put($modelName.'.filter', 'my');
                     $addScope = true;
                 } else {
-                    Session::put($modelName . '.filter', 'all');
+                    Session::put($modelName.'.filter', 'all');
                     $addScope = false;
                 }
             } else {
@@ -31,7 +31,7 @@ trait FilterByTeam
             }
 
             if ($addScope) {
-                if (((new self)->getTable()) == 'teams') {
+                if (((new self())->getTable()) == 'teams') {
                     static::addGlobalScope('team_id', function (Builder $builder) use ($currentUser) {
                         $builder->where('team_id', $currentUser->team_id)
                             ->orWhere('id', $currentUser->team_id);

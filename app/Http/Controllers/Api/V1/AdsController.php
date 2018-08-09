@@ -3,18 +3,11 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Ad;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Requests\Admin\StoreAdsRequest;
 use App\Http\Requests\Admin\UpdateAdsRequest;
-use App\Http\Controllers\Traits\FileUploadTrait;
-use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class AdsController extends Controller
 {
     use FileUploadTrait;
@@ -34,7 +27,6 @@ class AdsController extends Controller
         $request = $this->saveFiles($request);
         $ad = Ad::findOrFail($id);
         $ad->update($request->all());
-        
 
         return $ad;
     }
@@ -43,7 +35,6 @@ class AdsController extends Controller
     {
         $request = $this->saveFiles($request);
         $ad = Ad::create($request->all());
-        
 
         return $ad;
     }
@@ -52,6 +43,7 @@ class AdsController extends Controller
     {
         $ad = Ad::findOrFail($id);
         $ad->delete();
+
         return '';
     }
 }

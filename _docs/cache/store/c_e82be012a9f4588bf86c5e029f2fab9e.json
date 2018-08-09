@@ -1,0 +1,209 @@
+{
+    "name": "App\\Http\\Controllers\\Api\\V1\\ContactCompaniesController",
+    "line": 18,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Http\\Controllers\\Api\\V1",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Http\\Controllers\\Api\\V1\\ContactCompaniesController.php",
+    "relative_file": null,
+    "hash": "04184bfbb72eb8de0db1718571f33a343b77d74e",
+    "parent": "App\\Http\\Controllers\\Controller",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "ContactCompany": "App\\ContactCompany",
+        "Request": "Illuminate\\Http\\Request",
+        "Controller": "App\\Http\\Controllers\\Controller",
+        "StoreContactCompaniesRequest": "App\\Http\\Requests\\Admin\\StoreContactCompaniesRequest",
+        "UpdateContactCompaniesRequest": "App\\Http\\Requests\\Admin\\UpdateContactCompaniesRequest",
+        "FileUploadTrait": "App\\Http\\Controllers\\Traits\\FileUploadTrait",
+        "DataTables": "Yajra\\DataTables\\DataTables",
+        "Session": "Illuminate\\Support\\Facades\\Session",
+        "Input": "Illuminate\\Support\\Facades\\Input",
+        "DB": "Illuminate\\Support\\Facades\\DB",
+        "Carbon": "Carbon\\Carbon",
+        "Auth": "Illuminate\\Support\\Facades\\Auth"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": {
+        "App\\Http\\Controllers\\Traits\\FileUploadTrait": "App\\Http\\Controllers\\Traits\\FileUploadTrait"
+    },
+    "properties": [],
+    "methods": {
+        "index": {
+            "name": "index",
+            "line": 22,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "show": {
+            "name": "show",
+            "line": 27,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 27,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "update": {
+            "name": "update",
+            "line": 32,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 32,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\UpdateContactCompaniesRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "UpdateContactCompaniesRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 32,
+                            "endLine": 32
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "id": {
+                    "name": "id",
+                    "line": 32,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "store": {
+            "name": "store",
+            "line": 93,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 93,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\StoreContactCompaniesRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "StoreContactCompaniesRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 93,
+                            "endLine": 93
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "destroy": {
+            "name": "destroy",
+            "line": 111,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 111,
+                    "short_desc": null,
+                    "long_desc": null,
+                    "hint": null,
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

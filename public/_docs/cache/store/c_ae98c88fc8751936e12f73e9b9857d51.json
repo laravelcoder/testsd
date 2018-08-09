@@ -1,0 +1,420 @@
+{
+    "name": "App\\Http\\Controllers\\Admin\\AudiencesController",
+    "line": 18,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Http\\Controllers\\Admin",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Http\\Controllers\\Admin\\AudiencesController.php",
+    "relative_file": null,
+    "hash": "a258a56cfa65998ac1647a6ba33eabf19d279d48",
+    "parent": "App\\Http\\Controllers\\Controller",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Audience": "App\\Audience",
+        "Request": "Illuminate\\Http\\Request",
+        "Gate": "Illuminate\\Support\\Facades\\Gate",
+        "Controller": "App\\Http\\Controllers\\Controller",
+        "StoreAudiencesRequest": "App\\Http\\Requests\\Admin\\StoreAudiencesRequest",
+        "UpdateAudiencesRequest": "App\\Http\\Requests\\Admin\\UpdateAudiencesRequest",
+        "DataTables": "Yajra\\DataTables\\DataTables",
+        "Session": "Illuminate\\Support\\Facades\\Session",
+        "Input": "Illuminate\\Support\\Facades\\Input",
+        "DB": "Illuminate\\Support\\Facades\\DB",
+        "Carbon": "Carbon\\Carbon",
+        "Auth": "Illuminate\\Support\\Facades\\Auth"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "index": {
+            "name": "index",
+            "line": 25,
+            "short_desc": "Display a listing of Audience.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "create": {
+            "name": "create",
+            "line": 100,
+            "short_desc": "Show the form for creating new Audience.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        },
+        "store": {
+            "name": "store",
+            "line": 119,
+            "short_desc": "Store a newly created Audience in storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 119,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\StoreAudiencesRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "StoreAudiencesRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 119,
+                            "endLine": 119
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "edit": {
+            "name": "edit",
+            "line": 138,
+            "short_desc": "Show the form for editing Audience.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 138,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "update": {
+            "name": "update",
+            "line": 160,
+            "short_desc": "Update Audience in storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 160,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\App\\Http\\Requests\\Admin\\UpdateAudiencesRequest",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "App",
+                            "Http",
+                            "Requests",
+                            "Admin",
+                            "UpdateAudiencesRequest"
+                        ],
+                        "attributes": {
+                            "startLine": 160,
+                            "endLine": 160
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                },
+                "id": {
+                    "name": "id",
+                    "line": 160,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "show": {
+            "name": "show",
+            "line": 180,
+            "short_desc": "Display Audience.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 180,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "destroy": {
+            "name": "destroy",
+            "line": 197,
+            "short_desc": "Remove Audience from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 197,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "massDestroy": {
+            "name": "massDestroy",
+            "line": 213,
+            "short_desc": "Delete all selected Audience at once.",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 213,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Illuminate\\Http\\Request",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": {
+                        "nodeType": "Name_FullyQualified",
+                        "parts": [
+                            "Illuminate",
+                            "Http",
+                            "Request"
+                        ],
+                        "attributes": {
+                            "startLine": 213,
+                            "endLine": 213
+                        }
+                    },
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "restore": {
+            "name": "restore",
+            "line": 234,
+            "short_desc": "Restore Audience from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 234,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        },
+        "perma_del": {
+            "name": "perma_del",
+            "line": 251,
+            "short_desc": "Permanently delete Audience from storage.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "\\Illuminate\\Http\\Response",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "id": {
+                    "name": "id",
+                    "line": 251,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "int",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

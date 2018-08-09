@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Create1529088547AudiencesTable extends Migration
 {
@@ -12,12 +12,12 @@ class Create1529088547AudiencesTable extends Migration
      */
     public function up()
     {
-        if(! Schema::hasTable('audiences')) {
+        if (!Schema::hasTable('audiences')) {
             Schema::create('audiences', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name')->nullable();
                 $table->string('value');
-                
+
                 $table->timestamps();
                 $table->softDeletes();
 

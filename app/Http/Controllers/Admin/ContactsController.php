@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Contact;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreContactsRequest;
 use App\Http\Requests\Admin\UpdateContactsRequest;
-use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\DataTables;
 
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class ContactsController extends Controller
 {
     /**
@@ -24,7 +21,7 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('contact_access')) {
+        if (!Gate::allows('contact_access')) {
             return abort(401);
         }
         if ($filterBy = Input::get('filter')) {
@@ -35,14 +32,13 @@ class ContactsController extends Controller
             }
         }
 
-        
         if (request()->ajax()) {
             $query = Contact::query();
-            $query->with("company");
-            $query->with("created_by");
-            $query->with("created_by_team");
+            $query->with('company');
+            $query->with('created_by');
+            $query->with('created_by_team');
             $template = 'actionsTemplate';
-            
+
             $query->select([
                 'contacts.id',
                 'contacts.company_id',
@@ -63,7 +59,7 @@ class ContactsController extends Controller
             $table->addColumn('massDelete', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) use ($template) {
-                $gateKey  = 'contact_';
+                $gateKey = 'contact_';
                 $routeKey = 'admin.contacts';
 
                 return view($template, compact('row', 'gateKey', 'routeKey'));
@@ -96,7 +92,7 @@ class ContactsController extends Controller
                 return $row->created_by_team ? $row->created_by_team->name : '';
             });
 
-            $table->rawColumns(['actions','massDelete']);
+            $table->rawColumns(['actions', 'massDelete']);
 
             return $table->make(true);
         }
@@ -111,10 +107,10 @@ class ContactsController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('contact_create')) {
+        if (!Gate::allows('contact_create')) {
             return abort(401);
         }
-        
+
         $companies = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
@@ -125,12 +121,13 @@ class ContactsController extends Controller
     /**
      * Store a newly created Contact in storage.
      *
-     * @param  \App\Http\Requests\StoreContactsRequest  $request
+     * @param \App\Http\Requests\StoreContactsRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreContactsRequest $request)
     {
-        if (! Gate::allows('contact_create')) {
+        if (!Gate::allows('contact_create')) {
             return abort(401);
         }
         $contact = Contact::create($request->all());
@@ -139,23 +136,22 @@ class ContactsController extends Controller
             $contact->phones()->create($data);
         }
 
-
         return redirect()->route('admin.contacts.index');
     }
-
 
     /**
      * Show the form for editing Contact.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if (! Gate::allows('contact_edit')) {
+        if (!Gate::allows('contact_edit')) {
             return abort(401);
         }
-        
+
         $companies = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
@@ -168,25 +164,26 @@ class ContactsController extends Controller
     /**
      * Update Contact in storage.
      *
-     * @param  \App\Http\Requests\UpdateContactsRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UpdateContactsRequest $request
+     * @param int                                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateContactsRequest $request, $id)
     {
-        if (! Gate::allows('contact_edit')) {
+        if (!Gate::allows('contact_edit')) {
             return abort(401);
         }
         $contact = Contact::findOrFail($id);
         $contact->update($request->all());
 
-        $phones           = $contact->phones;
+        $phones = $contact->phones;
         $currentPhoneData = [];
         foreach ($request->input('phones', []) as $index => $data) {
-            if (is_integer($index)) {
+            if (is_int($index)) {
                 $contact->phones()->create($data);
             } else {
-                $id                          = explode('-', $index)[1];
+                $id = explode('-', $index)[1];
                 $currentPhoneData[$id] = $data;
             }
         }
@@ -198,42 +195,42 @@ class ContactsController extends Controller
             }
         }
 
-
         return redirect()->route('admin.contacts.index');
     }
-
 
     /**
      * Display Contact.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if (! Gate::allows('contact_view')) {
+        if (!Gate::allows('contact_view')) {
             return abort(401);
         }
-        
+
         $companies = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
-        $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');$phones = \App\Phone::where('contact_id', $id)->get();
+        $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $phones = \App\Phone::where('contact_id', $id)->get();
 
         $contact = Contact::findOrFail($id);
 
         return view('admin.contacts.show', compact('contact', 'phones'));
     }
 
-
     /**
      * Remove Contact from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if (! Gate::allows('contact_delete')) {
+        if (!Gate::allows('contact_delete')) {
             return abort(401);
         }
         $contact = Contact::findOrFail($id);
@@ -249,7 +246,7 @@ class ContactsController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('contact_delete')) {
+        if (!Gate::allows('contact_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
@@ -260,5 +257,4 @@ class ContactsController extends Controller
             }
         }
     }
-
 }

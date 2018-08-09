@@ -1,0 +1,42 @@
+{
+    "name": "App\\Traits\\FilterByTeam",
+    "line": 9,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Traits",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Traits\\FilterByTeam.php",
+    "relative_file": null,
+    "hash": "89aaf793d737e927ac1d7c57180a817bf6246e76",
+    "parent": null,
+    "modifiers": null,
+    "is_trait": true,
+    "is_interface": false,
+    "aliases": {
+        "Builder": "Illuminate\\Database\\Eloquent\\Builder",
+        "Auth": "Illuminate\\Support\\Facades\\Auth",
+        "Session": "Illuminate\\Support\\Facades\\Session"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "bootFilterByTeam": {
+            "name": "bootFilterByTeam",
+            "line": 11,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 10,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

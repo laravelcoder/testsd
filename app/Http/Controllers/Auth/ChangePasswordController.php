@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class ChangePasswordController extends Controller
 {
-
     /**
      * Create a new controller instance.
      */
@@ -22,12 +21,12 @@ class ChangePasswordController extends Controller
     /**
      * Where to redirect users after password is changed.
      *
-     * @var string $redirectTo
+     * @var string
      */
     protected $redirectTo = '/change_password';
 
     /**
-     * Change password form
+     * Change password form.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -42,6 +41,7 @@ class ChangePasswordController extends Controller
      * Change password.
      *
      * @param Request $request
+     *
      * @return $this|\Illuminate\Http\RedirectResponse
      */
     public function changePassword(Request $request)
@@ -51,6 +51,7 @@ class ChangePasswordController extends Controller
         if (Hash::check($request->get('current_password'), $user->password)) {
             $user->password = $request->get('new_password');
             $user->save();
+
             return redirect($this->redirectTo)->with('success', 'Password change successfully!');
         } else {
             return redirect()->back()->withErrors('Current password is incorrect');
@@ -60,14 +61,15 @@ class ChangePasswordController extends Controller
     /**
      * Get a validator for an incoming change password request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'current_password' => 'required',
-            'new_password' => 'required|min:6|confirmed',
+            'new_password'     => 'required|min:6|confirmed',
         ]);
     }
 }

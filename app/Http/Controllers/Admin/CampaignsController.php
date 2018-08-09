@@ -3,18 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Campaign;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreCampaignsRequest;
 use App\Http\Requests\Admin\UpdateCampaignsRequest;
-use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\DataTables;
 
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class CampaignsController extends Controller
 {
     /**
@@ -24,7 +21,7 @@ class CampaignsController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('campaign_access')) {
+        if (!Gate::allows('campaign_access')) {
             return abort(401);
         }
         if ($filterBy = Input::get('filter')) {
@@ -35,19 +32,17 @@ class CampaignsController extends Controller
             }
         }
 
-        
         if (request()->ajax()) {
             $query = Campaign::query();
-            $query->with("created_by");
-            $query->with("created_by_team");
-            $query->with("advertiser");
-            $query->with("ads");
+            $query->with('created_by');
+            $query->with('created_by_team');
+            $query->with('advertiser');
+            $query->with('ads');
             $template = 'actionsTemplate';
-            if(request('show_deleted') == 1) {
-                
-        if (! Gate::allows('campaign_delete')) {
-            return abort(401);
-        }
+            if (request('show_deleted') == 1) {
+                if (!Gate::allows('campaign_delete')) {
+                    return abort(401);
+                }
                 $query->onlyTrashed();
                 $template = 'restoreTemplate';
             }
@@ -68,7 +63,7 @@ class CampaignsController extends Controller
             $table->addColumn('massDelete', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) use ($template) {
-                $gateKey  = 'campaign_';
+                $gateKey = 'campaign_';
                 $routeKey = 'admin.campaigns';
 
                 return view($template, compact('row', 'gateKey', 'routeKey'));
@@ -92,15 +87,15 @@ class CampaignsController extends Controller
                 return $row->advertiser ? $row->advertiser->name : '';
             });
             $table->editColumn('ads.ad_label', function ($row) {
-                if(count($row->ads) == 0) {
+                if (count($row->ads) == 0) {
                     return '';
                 }
 
-                return '<span class="label label-info label-many">' . implode('</span><span class="label label-info label-many"> ',
-                        $row->ads->pluck('ad_label')->toArray()) . '</span>';
+                return '<span class="label label-info label-many">'.implode('</span><span class="label label-info label-many"> ',
+                        $row->ads->pluck('ad_label')->toArray()).'</span>';
             });
 
-            $table->rawColumns(['actions','massDelete','ads.ad_label']);
+            $table->rawColumns(['actions', 'massDelete', 'ads.ad_label']);
 
             return $table->make(true);
         }
@@ -115,15 +110,14 @@ class CampaignsController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('campaign_create')) {
+        if (!Gate::allows('campaign_create')) {
             return abort(401);
         }
-        
+
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $ads = \App\Ad::get()->pluck('ad_label', 'id');
-
 
         return view('admin.campaigns.create', compact('created_bies', 'created_by_teams', 'advertisers', 'ads'));
     }
@@ -131,40 +125,38 @@ class CampaignsController extends Controller
     /**
      * Store a newly created Campaign in storage.
      *
-     * @param  \App\Http\Requests\StoreCampaignsRequest  $request
+     * @param \App\Http\Requests\StoreCampaignsRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCampaignsRequest $request)
     {
-        if (! Gate::allows('campaign_create')) {
+        if (!Gate::allows('campaign_create')) {
             return abort(401);
         }
         $campaign = Campaign::create($request->all());
-        $campaign->ads()->sync(array_filter((array)$request->input('ads')));
-
-
+        $campaign->ads()->sync(array_filter((array) $request->input('ads')));
 
         return redirect()->route('admin.campaigns.index');
     }
 
-
     /**
      * Show the form for editing Campaign.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if (! Gate::allows('campaign_edit')) {
+        if (!Gate::allows('campaign_edit')) {
             return abort(401);
         }
-        
+
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $ads = \App\Ad::get()->pluck('ad_label', 'id');
-
 
         $campaign = Campaign::findOrFail($id);
 
@@ -174,34 +166,33 @@ class CampaignsController extends Controller
     /**
      * Update Campaign in storage.
      *
-     * @param  \App\Http\Requests\UpdateCampaignsRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UpdateCampaignsRequest $request
+     * @param int                                       $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCampaignsRequest $request, $id)
     {
-        if (! Gate::allows('campaign_edit')) {
+        if (!Gate::allows('campaign_edit')) {
             return abort(401);
         }
         $campaign = Campaign::findOrFail($id);
         $campaign->update($request->all());
-        $campaign->ads()->sync(array_filter((array)$request->input('ads')));
-
-
+        $campaign->ads()->sync(array_filter((array) $request->input('ads')));
 
         return redirect()->route('admin.campaigns.index');
     }
 
-
     /**
      * Display Campaign.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if (! Gate::allows('campaign_view')) {
+        if (!Gate::allows('campaign_view')) {
             return abort(401);
         }
         $campaign = Campaign::findOrFail($id);
@@ -209,16 +200,16 @@ class CampaignsController extends Controller
         return view('admin.campaigns.show', compact('campaign'));
     }
 
-
     /**
      * Remove Campaign from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if (! Gate::allows('campaign_delete')) {
+        if (!Gate::allows('campaign_delete')) {
             return abort(401);
         }
         $campaign = Campaign::findOrFail($id);
@@ -234,7 +225,7 @@ class CampaignsController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('campaign_delete')) {
+        if (!Gate::allows('campaign_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
@@ -246,16 +237,16 @@ class CampaignsController extends Controller
         }
     }
 
-
     /**
      * Restore Campaign from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function restore($id)
     {
-        if (! Gate::allows('campaign_delete')) {
+        if (!Gate::allows('campaign_delete')) {
             return abort(401);
         }
         $campaign = Campaign::onlyTrashed()->findOrFail($id);
@@ -267,12 +258,13 @@ class CampaignsController extends Controller
     /**
      * Permanently delete Campaign from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function perma_del($id)
     {
-        if (! Gate::allows('campaign_delete')) {
+        if (!Gate::allows('campaign_delete')) {
             return abort(401);
         }
         $campaign = Campaign::onlyTrashed()->findOrFail($id);

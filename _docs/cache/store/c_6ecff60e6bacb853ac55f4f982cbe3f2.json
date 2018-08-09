@@ -1,0 +1,140 @@
+{
+    "name": "App\\Team",
+    "line": 12,
+    "short_desc": "Class Team",
+    "long_desc": "",
+    "hint": null,
+    "tags": {
+        "package": [
+            [
+                "App"
+            ]
+        ],
+        "property": [
+            [
+                [
+                    [
+                        "string",
+                        false
+                    ]
+                ],
+                "name",
+                ""
+            ]
+        ]
+    },
+    "namespace": "App",
+    "file": "C:\\Users\\phillip.madsen\\repos\\newAds\/app\\Team.php",
+    "relative_file": null,
+    "hash": "f8bfb44a72cee1167c54bce24abc1088abd98b2a",
+    "parent": "Illuminate\\Database\\Eloquent\\Model",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Model": "Illuminate\\Database\\Eloquent\\Model"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": {
+        "fillable": {
+            "name": "fillable",
+            "line": 14,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": null,
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "name",
+                            "attributes": {
+                                "startLine": 14,
+                                "endLine": 14,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 14,
+                            "endLine": 14
+                        }
+                    }
+                ],
+                "attributes": {
+                    "startLine": 14,
+                    "endLine": 14,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "hidden": {
+            "name": "hidden",
+            "line": 15,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [],
+                "attributes": {
+                    "startLine": 15,
+                    "endLine": 15,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "searchable": {
+            "name": "searchable",
+            "line": 16,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 9,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [],
+                "attributes": {
+                    "startLine": 16,
+                    "endLine": 17,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        },
+        "name": {
+            "name": "name",
+            "line": 12,
+            "short_desc": "",
+            "long_desc": null,
+            "hint": [
+                [
+                    "string",
+                    false
+                ]
+            ],
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": null,
+            "default": null,
+            "errors": []
+        }
+    },
+    "methods": [],
+    "constants": []
+}

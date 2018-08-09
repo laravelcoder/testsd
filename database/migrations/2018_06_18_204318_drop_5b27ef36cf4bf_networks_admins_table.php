@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Drop5b27ef36cf4bfNetworksAdminsTable extends Migration
 {
@@ -22,16 +22,16 @@ class Drop5b27ef36cf4bfNetworksAdminsTable extends Migration
      */
     public function down()
     {
-        if(! Schema::hasTable('networks_admins')) {
+        if (!Schema::hasTable('networks_admins')) {
             Schema::create('networks_admins', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('network')->nullable();
                 $table->string('network_affiliate')->nullable();
-                
+
                 $table->timestamps();
                 $table->softDeletes();
 
-            $table->index(['deleted_at']);
+                $table->index(['deleted_at']);
             });
         }
     }

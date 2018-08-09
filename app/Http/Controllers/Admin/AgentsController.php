@@ -3,19 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Agent;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\FileUploadTrait;
 use App\Http\Requests\Admin\StoreAgentsRequest;
 use App\Http\Requests\Admin\UpdateAgentsRequest;
-use App\Http\Controllers\Traits\FileUploadTrait;
-use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Yajra\DataTables\DataTables;
 
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class AgentsController extends Controller
 {
     use FileUploadTrait;
@@ -27,7 +24,7 @@ class AgentsController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('agent_access')) {
+        if (!Gate::allows('agent_access')) {
             return abort(401);
         }
         if ($filterBy = Input::get('filter')) {
@@ -38,24 +35,22 @@ class AgentsController extends Controller
             }
         }
 
-        
         if (request()->ajax()) {
             $query = Agent::query();
-            $query->with("advertiser");
-            $query->with("created_by");
-            $query->with("created_by_team");
+            $query->with('created_by');
+            $query->with('created_by_team');
+            $query->with('advertiser');
             $template = 'actionsTemplate';
-            if(request('show_deleted') == 1) {
-                
-        if (! Gate::allows('agent_delete')) {
-            return abort(401);
-        }
+            if (request('show_deleted') == 1) {
+                if (!Gate::allows('agent_delete')) {
+                    return abort(401);
+                }
                 $query->onlyTrashed();
                 $template = 'restoreTemplate';
             }
             $query->select([
                 'agents.id',
-                'agents.advertiser_id',
+                'agents.advertiser_company',
                 'agents.first_name',
                 'agents.last_name',
                 'agents.email',
@@ -66,6 +61,7 @@ class AgentsController extends Controller
                 'agents.created_by_id',
                 'agents.created_by_team_id',
                 'agents.notes',
+                'agents.advertiser_id',
             ]);
             $table = Datatables::of($query);
 
@@ -75,13 +71,13 @@ class AgentsController extends Controller
             $table->addColumn('massDelete', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) use ($template) {
-                $gateKey  = 'agent_';
+                $gateKey = 'agent_';
                 $routeKey = 'admin.agents';
 
                 return view($template, compact('row', 'gateKey', 'routeKey'));
             });
-            $table->editColumn('advertiser.name', function ($row) {
-                return $row->advertiser ? $row->advertiser->name : '';
+            $table->editColumn('advertiser_company', function ($row) {
+                return $row->advertiser_company ? $row->advertiser_company : '';
             });
             $table->editColumn('first_name', function ($row) {
                 return $row->first_name ? $row->first_name : '';
@@ -99,7 +95,9 @@ class AgentsController extends Controller
                 return $row->address ? $row->address : '';
             });
             $table->editColumn('photo', function ($row) {
-                if($row->photo) { return '<a href="'. asset(env('UPLOAD_PATH').'/' . $row->photo) .'" target="_blank"><img src="'. asset(env('UPLOAD_PATH').'/thumb/' . $row->photo) .'"/>'; };
+                if ($row->photo) {
+                    return '<a href="'.asset(env('UPLOAD_PATH').'/'.$row->photo).'" target="_blank"><img src="'.asset(env('UPLOAD_PATH').'/thumb/'.$row->photo).'"/>';
+                }
             });
             $table->editColumn('about', function ($row) {
                 return $row->about ? $row->about : '';
@@ -113,8 +111,11 @@ class AgentsController extends Controller
             $table->editColumn('notes', function ($row) {
                 return $row->notes ? $row->notes : '';
             });
+            $table->editColumn('advertiser.name', function ($row) {
+                return $row->advertiser ? $row->advertiser->name : '';
+            });
 
-            $table->rawColumns(['actions','massDelete','photo']);
+            $table->rawColumns(['actions', 'massDelete', 'photo']);
 
             return $table->make(true);
         }
@@ -129,26 +130,27 @@ class AgentsController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('agent_create')) {
+        if (!Gate::allows('agent_create')) {
             return abort(401);
         }
-        
-        $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
 
-        return view('admin.agents.create', compact('advertisers', 'created_bies', 'created_by_teams'));
+        return view('admin.agents.create', compact('created_bies', 'created_by_teams', 'advertisers'));
     }
 
     /**
      * Store a newly created Agent in storage.
      *
-     * @param  \App\Http\Requests\StoreAgentsRequest  $request
+     * @param \App\Http\Requests\StoreAgentsRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StoreAgentsRequest $request)
     {
-        if (! Gate::allows('agent_create')) {
+        if (!Gate::allows('agent_create')) {
             return abort(401);
         }
         $request = $this->saveFiles($request);
@@ -158,55 +160,55 @@ class AgentsController extends Controller
             $agent->phones()->create($data);
         }
 
-
         return redirect()->route('admin.agents.index');
     }
-
 
     /**
      * Show the form for editing Agent.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if (! Gate::allows('agent_edit')) {
+        if (!Gate::allows('agent_edit')) {
             return abort(401);
         }
-        
-        $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
 
         $agent = Agent::findOrFail($id);
 
-        return view('admin.agents.edit', compact('agent', 'advertisers', 'created_bies', 'created_by_teams'));
+        return view('admin.agents.edit', compact('agent', 'created_bies', 'created_by_teams', 'advertisers'));
     }
 
     /**
      * Update Agent in storage.
      *
-     * @param  \App\Http\Requests\UpdateAgentsRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UpdateAgentsRequest $request
+     * @param int                                    $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateAgentsRequest $request, $id)
     {
-        if (! Gate::allows('agent_edit')) {
+        if (!Gate::allows('agent_edit')) {
             return abort(401);
         }
         $request = $this->saveFiles($request);
         $agent = Agent::findOrFail($id);
         $agent->update($request->all());
 
-        $phones           = $agent->phones;
+        $phones = $agent->phones;
         $currentPhoneData = [];
         foreach ($request->input('phones', []) as $index => $data) {
-            if (is_integer($index)) {
+            if (is_int($index)) {
                 $agent->phones()->create($data);
             } else {
-                $id                          = explode('-', $index)[1];
+                $id = explode('-', $index)[1];
                 $currentPhoneData[$id] = $data;
             }
         }
@@ -218,42 +220,42 @@ class AgentsController extends Controller
             }
         }
 
-
         return redirect()->route('admin.agents.index');
     }
-
 
     /**
      * Display Agent.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if (! Gate::allows('agent_view')) {
+        if (!Gate::allows('agent_view')) {
             return abort(401);
         }
-        
-        $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+
         $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
-        $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');$phones = \App\Phone::where('agent_id', $id)->get();
+        $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $phones = \App\Phone::where('agent_id', $id)->get();
 
         $agent = Agent::findOrFail($id);
 
         return view('admin.agents.show', compact('agent', 'phones'));
     }
 
-
     /**
      * Remove Agent from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if (! Gate::allows('agent_delete')) {
+        if (!Gate::allows('agent_delete')) {
             return abort(401);
         }
         $agent = Agent::findOrFail($id);
@@ -269,7 +271,7 @@ class AgentsController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('agent_delete')) {
+        if (!Gate::allows('agent_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
@@ -281,16 +283,16 @@ class AgentsController extends Controller
         }
     }
 
-
     /**
      * Restore Agent from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function restore($id)
     {
-        if (! Gate::allows('agent_delete')) {
+        if (!Gate::allows('agent_delete')) {
             return abort(401);
         }
         $agent = Agent::onlyTrashed()->findOrFail($id);
@@ -302,12 +304,13 @@ class AgentsController extends Controller
     /**
      * Permanently delete Agent from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function perma_del($id)
     {
-        if (! Gate::allows('agent_delete')) {
+        if (!Gate::allows('agent_delete')) {
             return abort(401);
         }
         $agent = Agent::onlyTrashed()->findOrFail($id);

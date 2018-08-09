@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Add5b27eeeee3605RelationshipsToNetworksAdminTable extends Migration
 {
@@ -12,16 +12,15 @@ class Add5b27eeeee3605RelationshipsToNetworksAdminTable extends Migration
      */
     public function up()
     {
-        Schema::table('networks_admins', function(Blueprint $table) {
+        Schema::table('networks_admins', function (Blueprint $table) {
             if (!Schema::hasColumn('networks_admins', 'created_by_id')) {
                 $table->integer('created_by_id')->unsigned()->nullable();
                 $table->foreign('created_by_id', '173671_5b27eee9cd7f8')->references('id')->on('users')->onDelete('cascade');
-                }
-                if (!Schema::hasColumn('networks_admins', 'created_by_team_id')) {
+            }
+            if (!Schema::hasColumn('networks_admins', 'created_by_team_id')) {
                 $table->integer('created_by_team_id')->unsigned()->nullable();
                 $table->foreign('created_by_team_id', '173671_5b27eee9e3a1c')->references('id')->on('teams')->onDelete('cascade');
-                }
-                
+            }
         });
     }
 
@@ -32,8 +31,7 @@ class Add5b27eeeee3605RelationshipsToNetworksAdminTable extends Migration
      */
     public function down()
     {
-        Schema::table('networks_admins', function(Blueprint $table) {
-            
+        Schema::table('networks_admins', function (Blueprint $table) {
         });
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Update1528841335ContactCompaniesTable extends Migration
 {
@@ -13,27 +13,25 @@ class Update1528841335ContactCompaniesTable extends Migration
     public function up()
     {
         Schema::table('contact_companies', function (Blueprint $table) {
-            
-if (!Schema::hasColumn('contact_companies', 'address2')) {
+            if (!Schema::hasColumn('contact_companies', 'address2')) {
                 $table->string('address2')->nullable();
-                }
-if (!Schema::hasColumn('contact_companies', 'city')) {
+            }
+            if (!Schema::hasColumn('contact_companies', 'city')) {
                 $table->string('city')->nullable();
-                }
-if (!Schema::hasColumn('contact_companies', 'state')) {
+            }
+            if (!Schema::hasColumn('contact_companies', 'state')) {
                 $table->string('state')->nullable();
-                }
-if (!Schema::hasColumn('contact_companies', 'zipcode')) {
+            }
+            if (!Schema::hasColumn('contact_companies', 'zipcode')) {
                 $table->string('zipcode')->nullable();
-                }
-if (!Schema::hasColumn('contact_companies', 'country')) {
+            }
+            if (!Schema::hasColumn('contact_companies', 'country')) {
                 $table->string('country')->nullable();
-                }
-if (!Schema::hasColumn('contact_companies', 'logo')) {
+            }
+            if (!Schema::hasColumn('contact_companies', 'logo')) {
                 $table->string('logo')->nullable();
-                }
+            }
         });
-
     }
 
     /**
@@ -50,8 +48,6 @@ if (!Schema::hasColumn('contact_companies', 'logo')) {
             $table->dropColumn('zipcode');
             $table->dropColumn('country');
             $table->dropColumn('logo');
-            
         });
-
     }
 }

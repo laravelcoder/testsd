@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Phone;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePhonesRequest;
 use App\Http\Requests\Admin\UpdatePhonesRequest;
+use App\Phone;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Yajra\DataTables\DataTables;
 
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 class PhonesController extends Controller
 {
     /**
@@ -22,23 +19,20 @@ class PhonesController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('phone_access')) {
+        if (!Gate::allows('phone_access')) {
             return abort(401);
         }
 
-
-        
         if (request()->ajax()) {
             $query = Phone::query();
-            $query->with("contact");
-            $query->with("advertiser");
-            $query->with("agent");
+            $query->with('contact');
+            $query->with('advertiser');
+            $query->with('agent');
             $template = 'actionsTemplate';
-            if(request('show_deleted') == 1) {
-                
-        if (! Gate::allows('phone_delete')) {
-            return abort(401);
-        }
+            if (request('show_deleted') == 1) {
+                if (!Gate::allows('phone_delete')) {
+                    return abort(401);
+                }
                 $query->onlyTrashed();
                 $template = 'restoreTemplate';
             }
@@ -57,7 +51,7 @@ class PhonesController extends Controller
             $table->addColumn('massDelete', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
             $table->editColumn('actions', function ($row) use ($template) {
-                $gateKey  = 'phone_';
+                $gateKey = 'phone_';
                 $routeKey = 'admin.phones';
 
                 return view($template, compact('row', 'gateKey', 'routeKey'));
@@ -72,7 +66,7 @@ class PhonesController extends Controller
                 return $row->agent ? $row->agent->first_name : '';
             });
 
-            $table->rawColumns(['actions','massDelete']);
+            $table->rawColumns(['actions', 'massDelete']);
 
             return $table->make(true);
         }
@@ -87,10 +81,10 @@ class PhonesController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('phone_create')) {
+        if (!Gate::allows('phone_create')) {
             return abort(401);
         }
-        
+
         $contacts = \App\Contact::get()->pluck('first_name', 'id')->prepend(trans('global.app_please_select'), '');
         $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $agents = \App\Agent::get()->pluck('first_name', 'id')->prepend(trans('global.app_please_select'), '');
@@ -101,34 +95,33 @@ class PhonesController extends Controller
     /**
      * Store a newly created Phone in storage.
      *
-     * @param  \App\Http\Requests\StorePhonesRequest  $request
+     * @param \App\Http\Requests\StorePhonesRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StorePhonesRequest $request)
     {
-        if (! Gate::allows('phone_create')) {
+        if (!Gate::allows('phone_create')) {
             return abort(401);
         }
         $phone = Phone::create($request->all());
 
-
-
         return redirect()->route('admin.phones.index');
     }
-
 
     /**
      * Show the form for editing Phone.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        if (! Gate::allows('phone_edit')) {
+        if (!Gate::allows('phone_edit')) {
             return abort(401);
         }
-        
+
         $contacts = \App\Contact::get()->pluck('first_name', 'id')->prepend(trans('global.app_please_select'), '');
         $advertisers = \App\ContactCompany::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $agents = \App\Agent::get()->pluck('first_name', 'id')->prepend(trans('global.app_please_select'), '');
@@ -141,33 +134,32 @@ class PhonesController extends Controller
     /**
      * Update Phone in storage.
      *
-     * @param  \App\Http\Requests\UpdatePhonesRequest  $request
-     * @param  int  $id
+     * @param \App\Http\Requests\UpdatePhonesRequest $request
+     * @param int                                    $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdatePhonesRequest $request, $id)
     {
-        if (! Gate::allows('phone_edit')) {
+        if (!Gate::allows('phone_edit')) {
             return abort(401);
         }
         $phone = Phone::findOrFail($id);
         $phone->update($request->all());
 
-
-
         return redirect()->route('admin.phones.index');
     }
-
 
     /**
      * Display Phone.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        if (! Gate::allows('phone_view')) {
+        if (!Gate::allows('phone_view')) {
             return abort(401);
         }
         $phone = Phone::findOrFail($id);
@@ -175,16 +167,16 @@ class PhonesController extends Controller
         return view('admin.phones.show', compact('phone'));
     }
 
-
     /**
      * Remove Phone from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if (! Gate::allows('phone_delete')) {
+        if (!Gate::allows('phone_delete')) {
             return abort(401);
         }
         $phone = Phone::findOrFail($id);
@@ -200,7 +192,7 @@ class PhonesController extends Controller
      */
     public function massDestroy(Request $request)
     {
-        if (! Gate::allows('phone_delete')) {
+        if (!Gate::allows('phone_delete')) {
             return abort(401);
         }
         if ($request->input('ids')) {
@@ -212,16 +204,16 @@ class PhonesController extends Controller
         }
     }
 
-
     /**
      * Restore Phone from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function restore($id)
     {
-        if (! Gate::allows('phone_delete')) {
+        if (!Gate::allows('phone_delete')) {
             return abort(401);
         }
         $phone = Phone::onlyTrashed()->findOrFail($id);
@@ -233,12 +225,13 @@ class PhonesController extends Controller
     /**
      * Permanently delete Phone from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function perma_del($id)
     {
-        if (! Gate::allows('phone_delete')) {
+        if (!Gate::allows('phone_delete')) {
             return abort(401);
         }
         $phone = Phone::onlyTrashed()->findOrFail($id);

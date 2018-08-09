@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Update1529087548CategoriesTable extends Migration
 {
@@ -13,25 +13,22 @@ class Update1529087548CategoriesTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            if(Schema::hasColumn('categories', 'created_by_id')) {
+            if (Schema::hasColumn('categories', 'created_by_id')) {
                 $table->dropForeign('172406_5b24056e0b34c');
                 $table->dropIndex('172406_5b24056e0b34c');
                 $table->dropColumn('created_by_id');
             }
-            if(Schema::hasColumn('categories', 'created_by_team_id')) {
+            if (Schema::hasColumn('categories', 'created_by_team_id')) {
                 $table->dropForeign('172406_5b24056e20a36');
                 $table->dropIndex('172406_5b24056e20a36');
                 $table->dropColumn('created_by_team_id');
             }
-            
         });
-Schema::table('categories', function (Blueprint $table) {
-            
-if (!Schema::hasColumn('categories', 'slug')) {
+        Schema::table('categories', function (Blueprint $table) {
+            if (!Schema::hasColumn('categories', 'slug')) {
                 $table->string('slug')->nullable();
-                }
+            }
         });
-
     }
 
     /**
@@ -43,11 +40,8 @@ if (!Schema::hasColumn('categories', 'slug')) {
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->dropColumn('slug');
-            
         });
-Schema::table('categories', function (Blueprint $table) {
-                        
+        Schema::table('categories', function (Blueprint $table) {
         });
-
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
-use Auth;
-use App\User;
 
 class LoginController extends Controller
 {
@@ -40,7 +40,6 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    
     public function redirectToSocial($driver)
     {
         return Socialite::driver($driver)->redirect();
@@ -48,12 +47,12 @@ class LoginController extends Controller
 
     public function handleSocialCallback($driver)
     {
-        try
-        {
+        try {
             $social_user = Socialite::driver($driver)->user();
             $user = User::where('email', '=', $social_user->getEmail())->first();
             if (!is_null($user)) {
                 Auth::login($user);
+
                 return redirect($this->redirectPath());
             } else {
                 return redirect()->back()->withErrors(trans('auth.failed'));

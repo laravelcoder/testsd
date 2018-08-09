@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Create1530127199CampaignsTable extends Migration
 {
@@ -12,13 +12,13 @@ class Create1530127199CampaignsTable extends Migration
      */
     public function up()
     {
-        if(! Schema::hasTable('campaigns')) {
+        if (!Schema::hasTable('campaigns')) {
             Schema::create('campaigns', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('name')->nullable();
                 $table->date('start_date')->nullable();
                 $table->date('finish_date')->nullable();
-                
+
                 $table->timestamps();
                 $table->softDeletes();
 

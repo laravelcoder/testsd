@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class Drop5b353eff847c6ProvidersTable extends Migration
 {
@@ -22,15 +22,15 @@ class Drop5b353eff847c6ProvidersTable extends Migration
      */
     public function down()
     {
-        if(! Schema::hasTable('providers')) {
+        if (!Schema::hasTable('providers')) {
             Schema::create('providers', function (Blueprint $table) {
                 $table->increments('id');
                 $table->string('provider');
-                
+
                 $table->timestamps();
                 $table->softDeletes();
 
-            $table->index(['deleted_at']);
+                $table->index(['deleted_at']);
             });
         }
     }
